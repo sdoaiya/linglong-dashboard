@@ -1,0 +1,337 @@
+/* 灵笼看板主题样式 */
+
+:root {
+  /* 主色调 - 灵笼品牌色 */
+  --ll-primary: #1a365d;
+  --ll-primary-light: #2c5282;
+  --ll-primary-dark: #0f172a;
+  
+  /* 强调色 - 橙色 */
+  --ll-accent: #ed8936;
+  --ll-accent-light: #f6ad55;
+  --ll-accent-dark: #c05621;
+  
+  /* 功能色 */
+  --ll-success: #10b981;
+  --ll-warning: #f59e0b;
+  --ll-error: #ef4444;
+  --ll-info: #3b82f6;
+  
+  /* 背景色 */
+  --ll-bg-primary: #0f172a;
+  --ll-bg-secondary: #1e293b;
+  --ll-bg-tertiary: #334155;
+  --ll-bg-elevated: #475569;
+  
+  /* 文字色 */
+  --ll-text-primary: #e2e8f0;
+  --ll-text-secondary: #94a3b8;
+  --ll-text-tertiary: #64748b;
+  --ll-text-inverse: #0f172a;
+  
+  /* 边框 */
+  --ll-border: #334155;
+  --ll-border-light: #475569;
+  --ll-border-focus: #ed8936;
+  
+  /* 阴影 */
+  --ll-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --ll-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --ll-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  --ll-shadow-glow: 0 0 20px rgba(237, 137, 54, 0.3);
+  
+  /* 间距 */
+  --ll-space-xs: 0.25rem;
+  --ll-space-sm: 0.5rem;
+  --ll-space-md: 1rem;
+  --ll-space-lg: 1.5rem;
+  --ll-space-xl: 2rem;
+  --ll-space-2xl: 3rem;
+  
+  /* 圆角 */
+  --ll-radius-sm: 4px;
+  --ll-radius-md: 8px;
+  --ll-radius-lg: 12px;
+  --ll-radius-xl: 16px;
+  --ll-radius-full: 9999px;
+  
+  /* 字体 */
+  --ll-font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ll-font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  
+  /* 字体大小 */
+  --ll-text-xs: 0.75rem;
+  --ll-text-sm: 0.875rem;
+  --ll-text-base: 1rem;
+  --ll-text-lg: 1.125rem;
+  --ll-text-xl: 1.25rem;
+  --ll-text-2xl: 1.5rem;
+  --ll-text-3xl: 1.875rem;
+  
+  /* 过渡 */
+  --ll-transition-fast: 150ms ease;
+  --ll-transition-base: 250ms ease;
+  --ll-transition-slow: 350ms ease;
+  
+  /* Z-index */
+  --ll-z-dropdown: 100;
+  --ll-z-sticky: 200;
+  --ll-z-fixed: 300;
+  --ll-z-modal-backdrop: 400;
+  --ll-z-modal: 500;
+  --ll-z-popover: 600;
+  --ll-z-tooltip: 700;
+}
+
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--ll-font-sans);
+  background: var(--ll-bg-primary);
+  color: var(--ll-text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ll-bg-secondary);
+  border-radius: var(--ll-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ll-bg-tertiary);
+  border-radius: var(--ll-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ll-bg-elevated);
+}
+
+/* 选中文字 */
+::selection {
+  background: rgba(237, 137, 54, 0.3);
+  color: var(--ll-text-primary);
+}
+
+/* 按钮基础样式 */
+.ll-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ll-space-sm);
+  padding: var(--ll-space-sm) var(--ll-space-md);
+  font-family: inherit;
+  font-size: var(--ll-text-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  border: none;
+  border-radius: var(--ll-radius-md);
+  cursor: pointer;
+  transition: all var(--ll-transition-fast);
+  white-space: nowrap;
+}
+
+.ll-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ll-btn--primary {
+  background: linear-gradient(135deg, var(--ll-accent) 0%, var(--ll-accent-dark) 100%);
+  color: white;
+  box-shadow: var(--ll-shadow-sm);
+}
+
+.ll-btn--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--ll-accent-light) 0%, var(--ll-accent) 100%);
+  box-shadow: var(--ll-shadow), var(--ll-shadow-glow);
+  transform: translateY(-1px);
+}
+
+.ll-btn--secondary {
+  background: var(--ll-bg-tertiary);
+  color: var(--ll-text-primary);
+  border: 1px solid var(--ll-border);
+}
+
+.ll-btn--secondary:hover:not(:disabled) {
+  background: var(--ll-bg-elevated);
+  border-color: var(--ll-border-light);
+}
+
+.ll-btn--ghost {
+  background: transparent;
+  color: var(--ll-text-secondary);
+}
+
+.ll-btn--ghost:hover:not(:disabled) {
+  background: var(--ll-bg-tertiary);
+  color: var(--ll-text-primary);
+}
+
+/* 卡片样式 */
+.ll-card {
+  background: var(--ll-bg-secondary);
+  border: 1px solid var(--ll-border);
+  border-radius: var(--ll-radius-lg);
+  padding: var(--ll-space-lg);
+  transition: all var(--ll-transition-base);
+}
+
+.ll-card:hover {
+  border-color: var(--ll-border-light);
+  box-shadow: var(--ll-shadow);
+}
+
+/* 输入框样式 */
+.ll-input {
+  width: 100%;
+  padding: var(--ll-space-sm) var(--ll-space-md);
+  font-family: inherit;
+  font-size: var(--ll-text-sm);
+  color: var(--ll-text-primary);
+  background: var(--ll-bg-tertiary);
+  border: 1px solid var(--ll-border);
+  border-radius: var(--ll-radius-md);
+  transition: all var(--ll-transition-fast);
+}
+
+.ll-input:focus {
+  outline: none;
+  border-color: var(--ll-border-focus);
+  box-shadow: 0 0 0 3px rgba(237, 137, 54, 0.2);
+}
+
+.ll-input::placeholder {
+  color: var(--ll-text-tertiary);
+}
+
+/* 徽章样式 */
+.ll-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ll-space-xs) var(--ll-space-sm);
+  font-size: var(--ll-text-xs);
+  font-weight: 600;
+  border-radius: var(--ll-radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ll-badge--success {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--ll-success);
+}
+
+.ll-badge--warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--ll-warning);
+}
+
+.ll-badge--error {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--ll-error);
+}
+
+.ll-badge--info {
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--ll-info);
+}
+
+/* 状态指示器 */
+.ll-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ll-space-xs);
+}
+
+.ll-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: var(--ll-radius-full);
+}
+
+.ll-status--online::before {
+  background: var(--ll-success);
+  box-shadow: 0 0 8px var(--ll-success);
+}
+
+.ll-status--busy::before {
+  background: var(--ll-warning);
+  box-shadow: 0 0 8px var(--ll-warning);
+}
+
+.ll-status--offline::before {
+  background: var(--ll-text-tertiary);
+}
+
+.ll-status--away::before {
+  background: var(--ll-info);
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.ll-animate-fade-in {
+  animation: fadeIn var(--ll-transition-base);
+}
+
+.ll-animate-slide-in {
+  animation: slideIn var(--ll-transition-base);
+}
+
+.ll-animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* 响应式断点 */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
